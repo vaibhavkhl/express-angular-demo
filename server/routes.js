@@ -27,7 +27,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/changepassword', function(req, res) {
-    console.log(req.body)
+    
     requser = req.body.user
     User.findById(requser._id, function(err, user){
       if (err)
@@ -53,7 +53,6 @@ module.exports = function(app) {
         return res.json('no user with this email')
       }
 
-      console.log('userrrrrrrr', user)
       if (user.temppassword == req.body.password) {
         return res.json({user: user})
       }
