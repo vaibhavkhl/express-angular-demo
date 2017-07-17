@@ -9,5 +9,5 @@
  */
 angular.module('clientApp')
   .controller('ProfileCtrl', function ($scope, $rootScope) {
-
+    $scope.currentUser = $rootScope.currentUser;
   });
