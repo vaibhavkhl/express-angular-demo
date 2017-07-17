@@ -8,10 +8,10 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ChangePasswordCtrl', function ($scope, $state, $rootScope, user) {
+  .controller('ChangePasswordCtrl', function ($scope, $state, $rootScope, user, $stateParams) {
 
-    $scope.user = $rootScope.currentUser;
-
+    $scope.user = $stateParams.user
+    console.log($scope.user)
     $scope.submit = function() {
       user.changepassword($scope.user).then(function(resp) {
         console.log(resp)

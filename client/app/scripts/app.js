@@ -29,14 +29,26 @@ angular
       })
       .state('profile', {
         url: '/profile',
+        params: {
+           user: null
+         },
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
       .state('changepassword', {
         url: '/changepassword',
+        params: {
+           user: null
+         },
         templateUrl: 'views/changepassword.html',
         controller: 'ChangePasswordCtrl'
       })
 
       $urlRouterProvider.otherwise('/login');
   })
+  // .run(function ($rootScope, $state) {
+  //   $rootScope.$on('$stateChangeStart',
+  //     function (event, toState, toParams) {
+  //         console.log(toState, toParams)
+  //     });
+  // });

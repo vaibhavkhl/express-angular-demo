@@ -10,12 +10,12 @@
 angular.module('clientApp')
   .controller('SignupCtrl', function ($scope, $state, $rootScope, user) {
 
-    $rootScope.currentUser = {};
+    //$rootScope.currentUser = {};
 
     $scope.submit = function() {
       user.create($scope.user.email).then(function(resp) {
-        $rootScope.currentUser = resp.data.user
-        $state.go('changepassword')
+        //$rootScope.currentUser = resp.data.user
+        $state.go('changepassword', {user: resp.data.user})
       })
     }
 

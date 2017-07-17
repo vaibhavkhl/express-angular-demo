@@ -8,6 +8,10 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ProfileCtrl', function ($scope, $rootScope) {
-    $scope.currentUser = $rootScope.currentUser;
+  .controller('ProfileCtrl', function ($scope, $rootScope, $stateParams, $state) {
+    if (!$stateParams.user) {
+      $state.go('login')
+    }
+    console.log($stateParams)
+    $scope.user = $stateParams.user
   });

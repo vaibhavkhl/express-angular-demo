@@ -8,8 +8,8 @@
  * Controller of the clientAppl
  */
 angular.module('clientApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, user, $state) {
-    $rootScope.currentUser = {}
+  .controller('LoginCtrl', function ($scope, $state, $rootScope, user, $timeout) {
+    //$rootScope.currentUser = {}
 
     $scope.submit = function() {
       user.login($scope.user)
@@ -19,14 +19,15 @@ angular.module('clientApp')
             console.log(resp.data)
             var user = resp.data.user
             user.loggedin = true
-            $rootscope.currentUser = user
-            $state.go('profile');
+            //$rootscope.currentUser = user
+            $state.go('profile', {user: user})
           }
 
-          if (resp.data.user) {
-            console.log('changepassword')
-            $rootscope.currentUser = resp.data.user
-            $state.go('changepassword');
+          if (resp.data.user && !resp.data.message) {
+            //console.log('changepassword')
+            //$rootscope.currentUser = resp.data.user
+
+            $state.go('changepassword', {user: resp.data.user});
           }
 
           $scope.errors = resp.data;
